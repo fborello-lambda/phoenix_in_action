@@ -1,7 +1,7 @@
 defmodule Auction do
-  alias Auction.{FakeRepo, Item}
+  alias Auction.Item
 
-  @repo FakeRepo
+  @repo Auction.Repo
 
   def list_items do
     @repo.all(Item)
@@ -15,6 +15,14 @@ defmodule Auction do
     @repo.get_by(Item, attrs)
   end
 
+  def insert_item(attrs) do
+    Auction.Item |> struct(attrs) |> @repo.insert()
+  end
+
+  def delete_item(%Auction.Item{} = item) do
+    @repo.delete(item)
+  end
+
   def displ() do
     list =
       for item <- list_items() do
@@ -22,5 +30,11 @@ defmodule Auction do
       end
 
     list |> Enum.join("\n")
+  end
+
+  def insert_all() do
+    for item <- Auction.Item.items() do
+      insert_item(item)
+    end
   end
 end
