@@ -47,22 +47,25 @@
       />
     </svg>
     <h1 class="text-brand mt-10 flex items-center text-sm font-semibold leading-6">
-      Phoenix Framework -- Home
+      Phoenix Framework -- New
       <small class="bg-brand/5 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6">
         v<%= Application.spec(:phoenix, :vsn) %>
       </small>
     </h1>
     <div class="flex">
       <div class="w-full sm:w-auto">
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-3"></div>
-        <%= for item <- Auction.list_items() do %>
-          <li>
-            <strong class="bg-brand/5 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6 text-orange-400	">
-              <.link href={~p"/items/#{item.id}"}><%= item.title %></.link>
-            </strong>
-            - <%= item.description %>
-          </li>
-        <% end %>
+        <.form for={@form} action={~p"/items"}>
+          <.input type="text" field={@form[:title]} />
+          <.input type="text" field={@form[:description]} />
+          <.input
+            type="datetime-local"
+            value="2024-01-24T19:30"
+            min="2024-01-24T00:00"
+            max="2024-06-24T00:00"
+            field={@form[:ends_at]}
+          />
+          <button>Save</button>
+        </.form>
       </div>
     </div>
   </div>

@@ -47,7 +47,7 @@
       />
     </svg>
     <h1 class="text-brand mt-10 flex items-center text-sm font-semibold leading-6">
-      Phoenix Framework -- Home
+      Phoenix Framework -- Show
       <small class="bg-brand/5 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6">
         v<%= Application.spec(:phoenix, :vsn) %>
       </small>
@@ -55,14 +55,7 @@
     <div class="flex">
       <div class="w-full sm:w-auto">
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-3"></div>
-        <%= for item <- Auction.list_items() do %>
-          <li>
-            <strong class="bg-brand/5 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6 text-orange-400	">
-              <.link href={~p"/items/#{item.id}"}><%= item.title %></.link>
-            </strong>
-            - <%= item.description %>
-          </li>
-        <% end %>
+        <%= "#{@item.id} - #{@item.title} - #{@item.description} - #{@item.ends_at}" %>
       </div>
     </div>
   </div>
