@@ -139,6 +139,7 @@ flowchart TD
 
 If the the Phoenix App is named `demo` → `demo_web` is the dir in which all the components, controllers, and routes are specified.
 
+```
 /demo/lib
 ├── demo
 │   ├── application.ex
@@ -153,6 +154,7 @@ If the the Phoenix App is named `demo` → `demo_web` is the dir in which all th
 │   ├── router.ex
 │   └── telemetry.ex
 └── demo_web.ex
+```
 
 `pipelines` group `plugs`
 
