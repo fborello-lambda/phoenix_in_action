@@ -47,30 +47,20 @@
       />
     </svg>
     <h1 class="text-brand mt-10 flex items-center text-sm font-semibold leading-6">
-      Phoenix Framework -- Show
+      Phoenix Framework -- New
       <small class="bg-brand/5 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6">
         v<%= Application.spec(:phoenix, :vsn) %>
       </small>
     </h1>
     <div class="flex">
       <div class="w-full sm:w-auto">
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-3"></div>
-        <%= "#{@item.id} - #{@item.title} - #{@item.description} - #{@item.ends_at}" %>
-
-        <%= if @current_user do %>
-          <h2>Place your bid!</h2>
-          <.form for={@form} action={~p"/items/#{@item.id}/bids"}>
-            <.input type="number" field={@form[:amount]} />
-            <button>Save</button>
-          </.form>
-        <% end %>
-
-        <h2>Current Bids</h2>
-        <ul>
-          <%= for bid <- @item.bids do %>
-            <li><%= "#{integer_to_currency(bid.amount)} -  from #{bid.user.username}" %></li>
-          <% end %>
-        </ul>
+        <.form for={@form} action={~p"/users"}>
+          <.input type="text" field={@form[:username]} />
+          <.input type="email" field={@form[:email_address]} />
+          <.input type="password" field={@form[:password]} />
+          <.input type="password" field={@form[:password_confirmation]} />
+          <button>Save</button>
+        </.form>
       </div>
     </div>
   </div>

@@ -3,17 +3,18 @@ defmodule AuctionWeb.ItemController do
   use AuctionWeb, :controller
 
   def index(conn, _params) do
-    render(conn, :test, layout: false)
+    render(conn, :test)
   end
 
   def show(conn, %{"id" => id}) do
-    item = Auction.get_item(id)
-    render(conn, :show, item: item, layout: false)
+    item = Auction.get_item_with_bids(id)
+    bid = Auction.new_bid()
+    render(conn, :show, item: item, form: to_form(bid))
   end
 
   def new(conn, _params) do
     item = Auction.new_item()
-    render(conn, :new, form: to_form(item), layout: false)
+    render(conn, :new, form: to_form(item))
   end
 
   def create(conn, %{"item" => item_params}) do
@@ -30,7 +31,7 @@ defmodule AuctionWeb.ItemController do
 
   def edit(conn, %{"id" => id}) do
     item = Auction.edit_item(id)
-    render(conn, :edit, form: to_form(item), id: id, layout: false)
+    render(conn, :edit, form: to_form(item), id: id)
   end
 
   def update(conn, %{"id" => id, "item" => item_params}) do

@@ -1,0 +1,21 @@
+  GET     /                           AuctionWeb.PageController :home
+  GET     /items                      AuctionWeb.ItemController :index
+  GET     /items/:id/edit             AuctionWeb.ItemController :edit
+  GET     /items/new                  AuctionWeb.ItemController :new
+  GET     /items/:id                  AuctionWeb.ItemController :show
+  POST    /items                      AuctionWeb.ItemController :create
+  PATCH   /items/:id                  AuctionWeb.ItemController :update
+  PUT     /items/:id                  AuctionWeb.ItemController :update
+  GET     /users/new                  AuctionWeb.UserController :new
+  GET     /users/:id                  AuctionWeb.UserController :show
+  POST    /users                      AuctionWeb.UserController :create
+  GET     /login                      AuctionWeb.SessionController :new
+  POST    /login                      AuctionWeb.SessionController :create
+  DELETE  /logout                     AuctionWeb.SessionController :delete
+  GET     /dev/dashboard/css-:md5     Phoenix.LiveDashboard.Assets :css
+  GET     /dev/dashboard/js-:md5      Phoenix.LiveDashboard.Assets :js
+  GET     /dev/dashboard              Phoenix.LiveDashboard.PageLive :home
+  GET     /dev/dashboard/:page        Phoenix.LiveDashboard.PageLive :page
+  GET     /dev/dashboard/:node/:page  Phoenix.LiveDashboard.PageLive :page
+  *       /dev/mailbox                Plug.Swoosh.MailboxPreview []
+

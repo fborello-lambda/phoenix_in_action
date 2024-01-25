@@ -92,6 +92,8 @@ defmodule AuctionWeb do
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())
+
+      import AuctionWeb.GlobalHelpers
     end
   end
 
