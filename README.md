@@ -1,3 +1,12 @@
+# Installation and Usage
+
+```sh
+git clone git@github.com:fborello-lambda/phoenix_in_action.git
+cd phoenix_in_action
+mix deps.get
+mix phx.server
+```
+
 # Elixir
 
 `spawn(<function>)` → runs the function asynchronously.
